@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperAssignment Project Data Collection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary-color: #0f2a4a;
+            --secondary-color: #f4f6f9;
+            --accent-color: #c5a065;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* 顶部横幅 */
+        .header-banner {
+            background: linear-gradient(135deg, #0f2a4a 0%, #1a4270 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-banner h1 {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-family: 'Georgia', serif;
+        }
+
+        .container {
+            max-width: 960px;
+        }
+
+        /* 卡片通用样式 */
+        .section-card {
+            background: white;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        h2.section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        /* 说明框 */
+        .instruction-box {
+            background-color: #eef2f7;
+            border-left: 4px solid #1a4270;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .hint-text {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* 论文条目样式 */
+        .paper-entry {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+
+        .paper-entry:hover {
+            border-color: #b0b0b0;
+        }
+
+        .entry-badge {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 表单控件 */
+        .form-label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #2c3e50;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            padding: 10px 12px;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.15);
+        }
+
+        /* 选项特别样式 - 允许换行 */
+        option {
+            white-space: normal;
+            padding: 10px;
+        }
+
+        .required-mark {
+            color: #dc3545;
+            margin-left: 3px;
+        }
+
+        .btn-outline-dashed {
+            border: 2px dashed #ccc;
+            color: #666;
+            font-weight: 600;
+            background: transparent;
+        }
+
+        .btn-outline-dashed:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: #f8f9fa;
+        }
+
+        .expertise-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 4px;
+            display: block;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header-banner">
+        <div class="container text-center">
+            <h1 class="display-5 mb-3">PaperAssignment Data Collection</h1>
+            <p class="lead mb-0" style="opacity: 0.9;">
+                Helping design better algorithms for reviewer-paper matching.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="section-card">
+            <h2 class="section-title">Instructions</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <p><strong>Project Goal:</strong> This initiative aims to construct a high-quality benchmark dataset
+                        to evaluate and improve paper-reviewer matching algorithms for top-tier AI conferences (e.g.,
+                        NeurIPS, AAAI, ACL). Your contribution will directly help the community develop fairer and more
+                        accurate assignment systems.</p>
+
+                    <div class="instruction-box">
+                        <strong><i class="bi bi-info-circle-fill"></i> Data Release Policy:</strong><br>
+                        To facilitate open research, the data collected in this survey (including your profile link and
+                        paper lists) will be publicly released as part of a non-anonymized dataset. <span
+                            style="color:red"> Note: Your email address will remain strictly confidential and will NOT
+                            be released.</span>
+                    </div>
+
+                    <h5>Instructions</h5>
+                    <p>Participating involves three simple steps:</p>
+                    <ol>
+                        <li><strong>Profile:</strong> Provide your professional details (e.g., Google Scholar/Semantic
+                            Scholar link).</li>
+                        <li><strong>Your Work (Optional):</strong> List 5–10 of your own recent, representative
+                            publications.</li>
+                        <li><strong>Expertise Annotation (Required):</strong> Identify 5–10 papers you have read in
+                            depth recently and self-evaluate your expertise in reviewing them (on a scale of 0–5).</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <form id="assignmentForm">
+
+            <div class="section-card">
+                <h2 class="section-title">Part 1: Researcher Profile</h2>
+
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label class="form-label" for="email">Work Email Address <span class="required-mark">*</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="name@university.edu" required>
+                        <div class="form-text">Will strictly remain confidential.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="profile_link">Link to Publication Profile <span
+                                class="required-mark">*</span></label>
+                        <input type="url" class="form-control" id="profile_link"
+                            placeholder="Google Scholar / Semantic Scholar / DBLP URL" required>
+                        <div class="form-text">You must have a public profile to participate.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-card">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="section-title mb-0">Part 2: Your Recent Core Work</h2>
+                    <span class="badge bg-secondary">Optional</span>
+                </div>
+                <p class="text-muted mb-4">
+                    Please list <strong>5-10</strong> of your own recently published core papers (URLs). This is not
+                    mandatory but highly helpful.
+                </p>
+
+                <div id="ownPapersContainer">
+                </div>
+
+                <button type="button" class="btn btn-outline-dashed w-100 py-2 mt-3" id="addOwnPaperBtn">
+                    <i class="bi bi-plus-lg"></i> Add Another Own Paper
+                </button>
+            </div>
+
+            <div class="section-card">
+                <h2 class="section-title">Part 3: Review Expertise</h2>
+                <div class="alert alert-light border-primary mb-4">
+                    <h6 class="alert-heading fw-bold"><i class="bi bi-lightbulb"></i> Which papers to report?</h6>
+                    <ul class="mb-0 small ps-3">
+                        <li>Recall 5-10 papers you read to a reasonable extent in the last year.</li>
+                        <li>Papers should <strong>not</strong> be authored by you.</li>
+                        <li>Try to include both papers you are expert in and papers you are less familiar with (to avoid
+                            ties).</li>
+                        <li>Search your browser history for "arxiv.org" to help recall.</li>
+                    </ul>
+                </div>
+
+                <div id="readPapersContainer">
+                </div>
+
+                <button type="button" class="btn btn-outline-dashed w-100 py-2 mt-3" id="addReadPaperBtn">
+                    <i class="bi bi-plus-lg"></i> Add Another Read Paper
+                </button>
+            </div>
+
+            <div class="d-grid gap-2 col-md-4 mx-auto mb-5">
+                <button type="submit" class="btn btn-primary btn-lg py-3 fw-bold"
+                    style="background-color: var(--primary-color); border-color: var(--primary-color);">
+                    Submit Survey
+                </button>
+            </div>
+
+        </form>
+
+        <div class="text-center text-muted mb-5 small">
+            Organized by <strong>PLANING Lab .<br>
+                School of Data Science and Engineering.<br>
+                East China Normal University</strong>.<br>
+            Contact: <a href="zixuanyang@stu.ecnu.edu.cn" class="text-decoration-none">zixuanyang@stu.ecnu.edu.cn</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Configuration
+            const MAX_PAPERS = 10;
+            const MIN_READ_PAPERS = 5; // Initial render count
+            const MIN_OWN_PAPERS = 5;  // Initial render count for optional section
+
+            // --- Logic for Part 2: Own Papers ---
+            const ownContainer = document.getElementById('ownPapersContainer');
+            const addOwnBtn = document.getElementById('addOwnPaperBtn');
+            let ownCount = 0;
+
+            function createOwnPaperRow(index) {
+                const div = document.createElement('div');
+                div.className = 'paper-entry';
+                div.innerHTML = `
+                <div class="entry-badge">My Paper #${index}</div>
+                <div class="mb-1">
+                    <label class="form-label">Paper URL <small class="text-muted">(Optional)</small></label>
+                    <input type="url" class="form-control" name="own_paper_url_${index}" placeholder="e.g. https://arxiv.org/abs/23xx.xxxxx">
+                </div>
+            `;
+                return div;
+            }
+
+            // Initialize Own Papers (5 slots)
+            for (let i = 1; i <= 5; i++) {
+                ownContainer.appendChild(createOwnPaperRow(i));
+                ownCount++;
+            }
+
+            addOwnBtn.addEventListener('click', () => {
+                if (ownCount < MAX_PAPERS) {
+                    ownCount++;
+                    ownContainer.appendChild(createOwnPaperRow(ownCount));
+                    if (ownCount >= MAX_PAPERS) addOwnBtn.style.display = 'none';
+                }
+            });
+
+
+            // --- Logic for Part 3: Read Papers & Expertise ---
+            const readContainer = document.getElementById('readPapersContainer');
+            const addReadBtn = document.getElementById('addReadPaperBtn');
+            let readCount = 0;
+
+            // The specific expertise options
+            const expertiseOptions = [
+                { val: 5, label: "5 - Top Expert", desc: "I am an active researcher in this sub-field; I have recently published work highly relevant to this paper, or I could write a similar paper myself." },
+                { val: 4, label: "4 - Expert", desc: "I am very familiar with this field; I could reproduce the method in the paper and accurately judge the quality of its technical details." },
+                { val: 3, label: "3 - Knowledgeable", desc: "I work or research in a related field; I understand the core concepts but have never published papers or worked on projects in this specific sub-direction." },
+                { val: 2, label: "2 - Vague Familiarity", desc: "I have heard of this field and can understand the abstract, but I am unfamiliar with the specific methodologies or technical details." },
+                { val: 1, label: "1 - No Expertise", desc: "I completely do not understand this field and cannot understand the terminology or core logic in the text." }
+            ];
+
+            function createReadPaperRow(index) {
+                const div = document.createElement('div');
+                div.className = 'paper-entry';
+
+                // Build options HTML
+                let optionsHtml = `<option value="" selected disabled>Select your expertise level...</option>`;
+                expertiseOptions.forEach(opt => {
+                    // Using a simpler label in dropdown, but we could put full text. 
+                    // Given the length, putting full text in option is best for accessibility, 
+                    // even if it looks long on mobile.
+                    optionsHtml += `<option value="${opt.val}">[${opt.val}] ${opt.desc}</option>`;
+                });
+
+                div.innerHTML = `
+                <div class="entry-badge">Read Paper #${index}</div>
+                <div class="row">
+                    <div class="col-lg-7 mb-3 mb-lg-0">
+                        <label class="form-label">Paper Title or URL <span class="required-mark">*</span></label>
+                        <input type="text" class="form-control" name="read_paper_${index}" placeholder="Title or Link" required>
+                    </div>
+                    <div class="col-lg-5">
+                        <label class="form-label">Expertise Rating <span class="required-mark">*</span></label>
+                        <select class="form-select" name="expertise_${index}" required style="text-overflow: ellipsis;">
+                            ${optionsHtml}
+                        </select>
+                        <div class="form-text small text-muted mt-1">
+                            Select the description that best fits.
+                        </div>
+                    </div>
+                </div>
+            `;
+                return div;
+            }
+
+            // Initialize Read Papers (5 slots)
+            for (let i = 1; i <= 5; i++) {
+                readContainer.appendChild(createReadPaperRow(i));
+                readCount++;
+            }
+
+            addReadBtn.addEventListener('click', () => {
+                if (readCount < MAX_PAPERS) {
+                    readCount++;
+                    readContainer.appendChild(createReadPaperRow(readCount));
+                    if (readCount >= MAX_PAPERS) addReadBtn.style.display = 'none';
+                }
+            });
+
+            // Real Submit Handler
+            document.getElementById('assignmentForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...';
+
+                try {
+                    // 1. Profile Data
+                    const email = document.getElementById('email').value;
+                    const profileLink = document.getElementById('profile_link').value;
+
+                    // 2. Own Papers
+                    const ownPapers = [];
+                    document.querySelectorAll('#ownPapersContainer input').forEach(input => {
+                        if (input.value.trim()) {
+                            ownPapers.push(input.value.trim());
+                        }
+                    });
+
+                    // 3. Read Papers
+                    const readPapers = [];
+                    // Iterate through each paper entry in the read container
+                    const readEntries = document.querySelectorAll('#readPapersContainer .paper-entry');
+                    readEntries.forEach(entry => {
+                        const titleInput = entry.querySelector('input[type="text"]');
+                        const expertiseSelect = entry.querySelector('select');
+
+                        if (titleInput && titleInput.value.trim() && expertiseSelect && expertiseSelect.value) {
+                            readPapers.push({
+                                title: titleInput.value.trim(),
+                                expertise: parseInt(expertiseSelect.value, 10)
+                            });
+                        }
+                    });
+
+                    const payload = {
+                        profile: { email, profileLink },
+                        ownPapers,
+                        readPapers,
+                        submittedAt: new Date().toISOString()
+                    };
+
+                    const response = await fetch('/api/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (response.ok) {
+                        alert('Thank you! Your survey has been submitted successfully.');
+                        window.location.reload();
+                    } else {
+                        const errText = await response.text();
+                        alert('Submission failed: ' + errText);
+                    }
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred during submission. Please try again.');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
