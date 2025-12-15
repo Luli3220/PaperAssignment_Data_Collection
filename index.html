@@ -195,9 +195,9 @@
                     <ol>
                         <li><strong>Profile:</strong> Provide your professional details (e.g., Google Scholar/Semantic
                             Scholar link).</li>
-                        <li><strong>Your Work (Optional):</strong> List 5–10 of your own recent, representative
+                        <li><strong>Your Work (Optional):</strong> List 1–10 of your own recent, representative
                             publications.</li>
-                        <li><strong>Expertise Annotation (Required):</strong> Identify 5–10 papers you have read in
+                        <li><strong>Expertise Annotation (Required):</strong> Identify 1–10 papers you have read in
                             depth recently and self-evaluate your expertise in reviewing them (on a scale of 0–5).</li>
                     </ol>
                 </div>
@@ -233,7 +233,7 @@
                     <span class="badge bg-secondary">Optional</span>
                 </div>
                 <p class="text-muted mb-4">
-                    Please list <strong>5-10</strong> of your own recently published core papers (URLs). This is not
+                    Please list <strong>1-10</strong> of your own recently published core papers (URLs). This is not
                     mandatory but highly helpful.
                 </p>
 
@@ -250,7 +250,7 @@
                 <div class="alert alert-light border-primary mb-4">
                     <h6 class="alert-heading fw-bold"><i class="bi bi-lightbulb"></i> Which papers to report?</h6>
                     <ul class="mb-0 small ps-3">
-                        <li>Recall 5-10 papers you read to a reasonable extent in the last year.</li>
+                        <li>Recall 1-10 papers you read to a reasonable extent in the last year.</li>
                         <li>Papers should <strong>not</strong> be authored by you.</li>
                         <li>Try to include both papers you are expert in and papers you are less familiar with (to avoid
                             ties).</li>
@@ -297,8 +297,8 @@
             // Configuration
             const MAX_PAPERS = 10;
 
-            const MIN_READ_PAPERS = 5; // Initial render count
-            const MIN_OWN_PAPERS = 5;  // Initial render count for optional section
+            const MIN_READ_PAPERS = 1; // Initial render count
+            const MIN_OWN_PAPERS = 1;  // Initial render count for optional section
 
             // --- Logic for Part 2: Own Papers ---
             const ownContainer = document.getElementById('ownPapersContainer');
@@ -318,8 +318,8 @@
                 return div;
             }
 
-            // Initialize Own Papers (5 slots)
-            for (let i = 1; i <= 5; i++) {
+            // Initialize Own Papers
+            for (let i = 1; i <= MIN_OWN_PAPERS; i++) {
                 ownContainer.appendChild(createOwnPaperRow(i));
                 ownCount++;
             }
@@ -381,8 +381,8 @@
                 return div;
             }
 
-            // Initialize Read Papers (5 slots)
-            for (let i = 1; i <= 5; i++) {
+            // Initialize Read Papers
+            for (let i = 1; i <= MIN_READ_PAPERS; i++) {
                 readContainer.appendChild(createReadPaperRow(i));
                 readCount++;
             }
