@@ -279,7 +279,7 @@
             Organized by <strong>PLANING Lab .<br>
                 School of Data Science and Engineering.<br>
                 East China Normal University</strong>.<br>
-            Contact: <a href="zixuanyang@stu.ecnu.edu.cn" class="text-decoration-none">zixuanyang@stu.ecnu.edu.cn</a>
+            Contact: <a href="xiangli@dase.ecnu.edu.cn" class="text-decoration-none">xiangli@dase.ecnu.edu.cn</a>
         </div>
 
     </div>
@@ -312,7 +312,7 @@
                 <div class="entry-badge">My Paper #${index}</div>
                 <div class="mb-1">
                     <label class="form-label">Paper URL <small class="text-muted">(Optional)</small></label>
-                    <input type="url" class="form-control" name="own_paper_url_${index}" placeholder="e.g. https://arxiv.org/abs/xxxx.xxxxx">
+                    <input type="url" class="form-control" name="own_paper_url_${index}" placeholder="e.g. https://arxiv.org/abs/23xx.xxxxx">
                 </div>
             `;
                 return div;
@@ -364,8 +364,8 @@
                 <div class="entry-badge">Read Paper #${index}</div>
                 <div class="row">
                     <div class="col-lg-7 mb-3 mb-lg-0">
-                        <label class="form-label">Paper Homepage URL <span class="required-mark">*</span></label>
-                        <input type="url" class="form-control" name="read_paper_${index}" placeholder="e.g. https://arxiv.org/abs/2503.14476" required>
+                        <label class="form-label">Paper Title or URL <span class="required-mark">*</span></label>
+                        <input type="text" class="form-control" name="read_paper_${index}" placeholder="Title or Link" required>
                     </div>
                     <div class="col-lg-5">
                         <label class="form-label">Expertise Rating <span class="required-mark">*</span></label>
@@ -422,12 +422,12 @@
                     // Iterate through each paper entry in the read container
                     const readEntries = document.querySelectorAll('#readPapersContainer .paper-entry');
                     readEntries.forEach(entry => {
-                        const urlInput = entry.querySelector('input[type="url"]');
+                        const titleInput = entry.querySelector('input[type="text"]');
                         const expertiseSelect = entry.querySelector('select');
 
-                        if (urlInput && urlInput.value.trim() && expertiseSelect && expertiseSelect.value) {
+                        if (titleInput && titleInput.value.trim() && expertiseSelect && expertiseSelect.value) {
                             readPapers.push({
-                                url: urlInput.value.trim(),
+                                title: titleInput.value.trim(),
                                 expertise: parseInt(expertiseSelect.value, 10)
                             });
                         }
